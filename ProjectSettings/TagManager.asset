@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - saw
+  - Cuttable
+  - Dump
+  - Wood
   layers:
   - Default
   - TransparentFX

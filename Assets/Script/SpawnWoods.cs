@@ -14,7 +14,7 @@ public class SpawnWoods : MonoBehaviour
     public GameObject cutArea;
     void Start()
     {
-        InvokeRepeating("SetSpawner", 0, 2);
+        InvokeRepeating("SetSpawner", 0, 3);
     }
 
     // Update is called once per frame

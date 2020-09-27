@@ -2,16 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using TMPro;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UIElements;
 
 public class WoodMove : MonoBehaviour
 {
     private Rigidbody rb;
-    private Transform myTransform;
     private Vector3 contactPoint;
     private float distance;
     private Vector3 big_scale;
@@ -20,10 +21,15 @@ public class WoodMove : MonoBehaviour
     private Vector3 small_pos;
     public GameObject bigPiece;
     public GameObject smallPiece;
-
+    private GameObject newBig;
+    private GameObject newSmall;
+    private float speed;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        newBig = null;
+        newSmall = null;
+        speed = .2f;
         //rb.AddForce(new Vector3(1, 0, 0) * Time.deltaTime);
     }
     private void OnCollisionEnter(Collision collision)
@@ -37,7 +43,6 @@ public class WoodMove : MonoBehaviour
             if (contactPoint.z < childTransform.position.z + childTransform.localScale.z/2 && contactPoint.z> childTransform.position.z - childTransform.localScale.z / 2)
             {
                 UnityEngine.Debug.Log("Girdi!");
-                myTransform = null;
                 distance = transform.position.z - contactPoint.z;
                 big_scale.y = Math.Abs(distance) + transform.localScale.y / 2;
                 big_scale.x = transform.localScale.x;
@@ -52,10 +57,12 @@ public class WoodMove : MonoBehaviour
                 small_pos.y = transform.position.y;
                 small_pos.x = transform.position.x;
                 Destroy(gameObject);
-                var newBig = Instantiate(bigPiece, big_pos , transform.rotation);
-                var newSmall = Instantiate(smallPiece, small_pos, transform.rotation);
+                newBig = Instantiate(bigPiece, big_pos , transform.rotation);
+                newSmall = Instantiate(smallPiece, small_pos, transform.rotation);
                 newBig.transform.localScale = big_scale;
-                newSmall.transform.localScale = small_scale;   
+                newBig.GetComponent<Rigidbody>().velocity = rb.velocity;
+                newSmall.transform.localScale = small_scale;
+                newSmall.GetComponent<Rigidbody>().velocity = rb.velocity;
                 
             }
             else
@@ -68,11 +75,4 @@ public class WoodMove : MonoBehaviour
     {
         
     }
-    IEnumerator WaitForAFew()
-    {
-        //Do Something Before the Wait
-        yield return new WaitForSeconds(1.0f);
-        //Do Something After the Wait
-    }
-
 }
