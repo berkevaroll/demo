@@ -98,6 +98,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bigPiece: {fileID: 1925114800114949404, guid: e5c6cd0dfcba3c844a76c6af4b014e1e, type: 3}
   smallPiece: {fileID: 1925114800114949404, guid: e5c6cd0dfcba3c844a76c6af4b014e1e, type: 3}
+  myParticle: {fileID: 1090345270121402223, guid: b4b0cfa43aff3214c8565621f607b8a6, type: 3}
+  shake_decay: 0.002
+  shake_intensity: 0.3
 --- !u!54 &-9077680721449396170
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -112,7 +115,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 88
+  m_Constraints: 24
   m_CollisionDetection: 0
 --- !u!64 &8386757688167491404
 MeshCollider:

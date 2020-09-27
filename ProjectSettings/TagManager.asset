@@ -8,6 +8,7 @@ TagManager:
   - Cuttable
   - Dump
   - Wood
+  - sharp
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,7 @@ public class SpawnWoods : MonoBehaviour
     public GameObject cutArea;
     void Start()
     {
-        InvokeRepeating("SetSpawner", 0, 3);
+        InvokeRepeating("SetSpawner", 0, 4);
     }
 
     // Update is called once per frame
@@ -46,7 +46,6 @@ public class SpawnWoods : MonoBehaviour
         newCutArea.transform.localScale = cutScale;
 
         newCutArea.transform.parent = newWood.transform;
-
         
     }
 }
