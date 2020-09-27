@@ -17,13 +17,12 @@ public class SawControl : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            rb.transform.position += new Vector3(0,0,-.01f);
+            rb.transform.position += new Vector3(0,0,-.03f);
                 
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            rb.transform.position += new Vector3(0, 0, .01f);
-            Debug.Log("Saga git");
+            rb.transform.position += new Vector3(0, 0, .03f);
         }
     }
 }
